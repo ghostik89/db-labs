@@ -8,3 +8,4 @@ select * from `mydb`.`products` where (`ID` = '1');
 select * from `mydb`.`article` where (`ID` = '1');
 
 ---4. show all products
+SELECT * FROM mydb.products;
