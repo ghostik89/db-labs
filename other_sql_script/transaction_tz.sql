@@ -26,6 +26,20 @@ UPDATE `mydb`.`article` SET `ARTICLE_TEXT` = 'New article. for update' WHERE (`I
 DELETE FROM `mydb`.`article` WHERE (`ID` = '11') and (`user_ID` = '1');
 
 ---9. create comment
+INSERT INTO `mydb`.`comments` (`TEXT`, `user_owns_product_ ID`, `user_ID`) VALUES ('Совсем', '1', '1');
 
+---10. update comment
+UPDATE `mydb`.`comments` SET `TEXT` = 'Нормальный продукт' WHERE (`ID` = '1');
 
+---11. delete comment
+DELETE FROM `mydb`.`comments` WHERE (`ID` = '1');
+
+---12. add product to favorite list
+INSERT INTO `mydb`.`favorite_products` (`products_ID`, `user_ID`) VALUES ('1', '2');
+
+---13. add product to basket
+INSERT INTO `mydb`.`users_order_products` (`COUNT`, `user_ID`, `user_owns_product_ ID`, `product_state_ID`) VALUES ('45', '1', '1', '6');
+
+---14. Buy product
+UPDATE `mydb`.`users_order_products` SET `product_state_ID` = '1' WHERE (`ID` = '11') and (`user_ID` = '1') and (`user_owns_product_ ID` = '1') and (`product_state_ID` = '6');
 
