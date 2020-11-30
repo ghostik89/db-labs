@@ -23,4 +23,5 @@ user_owns_product.user_ID = users_order_products.user_owns_product_ID
 where (user_owns_product.user_ID = 4);
 
 ---26. show all articles
-SELECT * FROM mydb.article;
+SELECT * FROM mydb.article; 
+
