@@ -1,5 +1,5 @@
 ---15. show comments to product
-SELECT * FROM mydb.comments where (`user_owns_product_ ID` = '1');
+SELECT * FROM mydb.comments where (`user_owns_product_ID` = '1');
 
 ---16. show product
 select * from `mydb`.`products` where (`ID` = '1');
