@@ -181,3 +181,107 @@ select * from mydb.category
 left join mydb.article on article.ID = category.ID;
 
 ---78
+select * from mydb.category
+inner join mydb.game_series on game_series.ID = category.ID;
+
+---79
+select NAME, DESCRIPTION 
+from mydb.category inner join mydb.article on article.ID = category.ID;
+
+---80
+select * from mydb.category inner join mydb.article on article.ID = category.ID;
+
+---81
+select * from mydb.auditory_of_games
+inner join mydb.article on article.ID = auditory_of_games.ID;
+
+---82
+select * from mydb.auditory_of_games
+inner join mydb.category on category.ID = auditory_of_games.ID;
+
+---83
+select * from mydb.complectation
+inner join mydb.category on category.ID = complectation.ID;
+
+---84
+select * from mydb.game_series
+inner join mydb.category on category.ID = game_series.ID;
+
+---85
+select * from mydb.user e
+inner join mydb.user m on m.ID = e.ID;
+
+---86
+select * from mydb.user e
+left join mydb.user m on m.ID = e.ID;
+
+---87
+select * from mydb.user e
+right join mydb.user m on m.ID = e.ID;
+
+---88
+select * from mydb.user e
+cross join mydb.user m on m.ID = e.ID;
+
+---89
+select concat(e.EMAIL, 'he') from mydb.user e
+cross join mydb.user m on m.ID = e.ID
+order by e.NAME;
+
+---90
+select concat(e.NAME, 'he'), concat(e.EMAIL, 'he') from mydb.user e
+cross join mydb.user m on m.ID = e.ID
+order by e.NAME;
+
+---91
+select concat(e.NAME, 'he'), concat(e.EMAIL, 'he') from mydb.user e
+cross join mydb.user m on m.ID = e.ID
+order by e.NAME desc;
+
+---92
+select concat(e.NAME, 'he'), concat(e.EMAIL, 'he') from mydb.user e
+cross join mydb.user m on m.ID = e.ID
+order by e.NAME asc;    
+
+---93
+select * from mydb.article e
+cross join mydb.user m on m.ID = e.user_ID
+group by e.user_ID;
+
+---94
+select * from mydb.article e
+cross join mydb.user m on m.ID = e.user_ID
+order by e.user_ID;
+
+---95
+select e.ARTICLE_TEXT, m.NAME from mydb.article e
+cross join mydb.user m on m.ID = e.user_ID
+order by e.user_ID;
+
+---96
+select e.ARTICLE_TEXT, m.NAME from mydb.article e
+cross join mydb.user m on m.ID = e.user_ID
+order by e.user_ID
+limit 5;
+
+---97
+select * from mydb.article e
+cross join mydb.user m on m.ID = e.user_ID
+order by e.user_ID
+limit 1;
+
+---98
+select concat(e.NAME, 'he'), concat(e.EMAIL, 'he') from mydb.user e
+cross join mydb.user m on m.ID = e.ID
+order by e.NAME asc
+limit 3;   
+
+---99
+select * from mydb.user e
+right join mydb.user m on m.ID = e.ID
+limit 5;
+
+---100
+select * from mydb.auditory_of_games
+inner join mydb.article on article.ID = auditory_of_games.ID
+limit 4;
