@@ -9,10 +9,10 @@ const urlencodedParser = bodyParser.urlencoded({extended: false});
 
 const pool = mysql.createPool({
     connectionLimit: 5,
-    host: "127.0.0.1",
-    user: "root",
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
     database: "mydb",
-    password: "password"
+    password: process.env.DB_PASSWORD
 });
 
 // получение списка пользователей
