@@ -2,6 +2,7 @@ const express = require('express')
 const mysql = require('mysql2')
 const bodyParser = require("body-parser");
 
+require('dotenv').config()
 const app = express()
 
 const urlencodedParser = bodyParser.urlencoded({extended: false});
@@ -23,5 +24,5 @@ app.get("/", function(req, res){
 });
 
 app.listen(process.env.PORT? process.env.PORT : 5000, () => {
-     console.log('App has been started at ' + process.env.DEV_PORT)
+     console.log('App has been started at ' + process.env.PORT)
 })
