@@ -1,1 +1,2 @@
-hobby-app\node_modules
+/hobby-app/node_modules/
+./.idea
