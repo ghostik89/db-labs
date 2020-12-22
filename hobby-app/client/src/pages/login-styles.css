@@ -1,0 +1,8 @@
+.center-container{
+    display: flex;
+    align-items: center;
+}
+
+.btn-shift{
+    margin-right: 0.5rem;
+}

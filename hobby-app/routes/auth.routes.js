@@ -17,7 +17,7 @@ const pool = mysql.createPool({
 });
 
 // /api/auth
-router.get('/login', [
+router.post('/login', [
     check('email', 'Envalid email').normalizeEmail().isEmail(),
     check('password').exists()
 ], async (req, res) => {
@@ -37,16 +37,16 @@ router.get('/login', [
                     return res.status(500).json({message:err});
                 const isMatch = await bcrypt.compare(password, data[0].PASSWORD)
 
-                if(data.length == 0 && !isMatch)
-                    return res.status(403).json({message: 'Unauthorizen'});
+                if(data.length === 0 && !isMatch)
+                    return res.status(403).json({message: 'Unauthorized'});
 
                 const token = jwt.sign({userId:  data[0].ID}, process.env.SECRET_KEY, {expiresIn: '1h'})
 
-                return res.json({token});
+                return res.json({token, userId:  data[0].ID});
         });
 
     }catch(e){
-        return res.status(500).json({message:'Enternal server error'})
+        return res.status(500).json({message:'Internal server error'})
     }
 })
 
