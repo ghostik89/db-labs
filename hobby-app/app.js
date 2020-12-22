@@ -11,6 +11,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.use('/api/auth', require('./routes/auth.routes'))
+app.use('/api/products', require('./routes/products.routes'))
+
 
 
 app.listen(process.env.PORT? process.env.PORT : 5000, () => {
