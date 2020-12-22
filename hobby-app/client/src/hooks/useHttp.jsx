@@ -14,7 +14,7 @@ export const useHttp = () => {
                 headers['Content-Type'] = 'application/json;charset=utf-8'
             }
             if(token)
-                headers['Authorization'] = `Basic ${token}`
+                headers['Authorization'] = `Bearer ${token}`
             const response = await fetch(`${url}`, {method, body, headers})
             let data = null
             if (method === 'POST' || method === 'GET')
