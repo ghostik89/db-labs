@@ -41,4 +41,32 @@ router.post('/product/create', auth, async (req, res) => {
     }
 })
 
+// /api/comment/product/create - create comment by product id
+router.put('/product/update', auth, async (req, res) => {
+    try{
+        const {text, commentId} = req.body
+        pool.query('UPDATE `mydb`.`comments` SET `TEXT` = ? WHERE (`ID` = ?);',
+            [text, commentId],async (err) => {
+                return err? res.status(500).json({message:err}):
+                    res.json({message:'Updated'});
+            })
+    }catch (e) {
+        return res.status(500).json({message: 'Internal server error'})
+    }
+})
+
+// /api/comment/product/delete/:id - create comment by product id
+router.delete('/product/delete/:id', auth, async (req, res) => {
+    try{
+        const id = req.params.id
+        pool.query('DELETE FROM `mydb`.`comments` WHERE (`ID` = ?);',
+            [id],async (err) => {
+                return err? res.status(500).json({message:err}):
+                    res.json({message:'Deleted'});
+            })
+    }catch (e) {
+        return res.status(500).json({message: 'Internal server error'})
+    }
+})
+
 module.exports = router
