@@ -6,6 +6,7 @@ import {LoginPage} from "../pages/LoginPage";
 import {paths} from "../helpers/paths";
 import {HomePage} from "../pages/HomePage";
 import {RegisterPage} from "../pages/RegisterPage";
+import {ProductPage} from "../pages/ProductPage";
 
 export const useRoutes = (isAuth) => {
     return(
@@ -14,6 +15,9 @@ export const useRoutes = (isAuth) => {
                 <>
                     <Route path={paths.toHome}>
                         <HomePage/>
+                    </Route>
+                    <Route path={paths.toProduct}>
+                        <ProductPage/>
                     </Route>
                     <Redirect to={paths.toHome}/>
                 </>:

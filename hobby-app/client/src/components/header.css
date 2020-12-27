@@ -1,3 +1,7 @@
 .header{
     padding: 0 1rem;
 }
+
+.logout{
+    cursor: pointer;
+}

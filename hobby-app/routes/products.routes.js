@@ -28,7 +28,18 @@ router.get('/allProducts', auth, async (req, res) => {
 router.get('/product/:id', auth, async (req, res) => {
     try{
         const id = req.params.id
-        pool.query('select * from `mydb`.`products` where (`ID` = ?);',[id],
+        pool.query('SELECT ' +
+            'products.ID,' +
+            'products.NAME, ' +
+            '    products.DESCRIPTION, ' +
+            '    game_series.DESCRIPTION as gameSeriesDescr,' +
+            'published_houses.NAME as pubName, ' +
+            '    category.NAME as categoryName' +
+            ' FROM mydb.products\n' +
+            'join mydb.game_series on game_series.ID = products.game_series_ID\n' +
+            'join mydb.published_houses on published_houses.ID = products.published_houses_ID\n' +
+            'join mydb.category on category.ID = products.category_ID\n' +
+            'where products.ID = ?;',[id],
             async (err, data) => {
                 return err? res.status(500).json({message:err}): res.status(200).json(data);
             })

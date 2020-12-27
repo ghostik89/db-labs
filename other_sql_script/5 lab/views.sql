@@ -1,10 +1,10 @@
---- 1. user and his comments
+# --- 1. user and his comments
 create view `user_comments` as 
 select user.NAME, comments.TEXT from mydb.user
 join mydb.comments on user.ID = comments.user_ID;
 
 
---- 2. full info about product
+# --- 2. full info about product
 create view `full_info_about_product` as 
 SELECT 
 	products.NAME, 

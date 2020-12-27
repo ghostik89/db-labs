@@ -26,21 +26,25 @@ export const HomePage = () => {
             <div className="container">
                 {loading?
                     <Loader/>:
-                    <div className="collection">
-                        {products.map((elem, index) => (
-                            <Link
-                                key={index}
-                                to={paths.goToProductPage(elem.ID)}
-                                className="collection-item avatar"
-                            >
-                                <i className="material-icons circle green">folder</i>
-                                <span className="title">{elem.NAME}</span>
-                                <p>
-                                    {elem.DESCRIPTION}
-                                </p>
-                            </Link>
-                        ))}
-                    </div>}
+                    <>
+                        <h1>Доступная продукция</h1>
+                        <div className="collection">
+                            {products.map((elem, index) => (
+                                <Link
+                                    key={index}
+                                    to={paths.goToProductPage(elem.ID)}
+                                    className="collection-item avatar"
+                                >
+                                    <i className="material-icons circle green medium">casino</i>
+                                    <span className="title">{elem.NAME}</span>
+                                    <p>
+                                        {elem.DESCRIPTION}
+                                    </p>
+                                </Link>
+                            ))}
+                        </div>
+                    </>
+                }
             </div>
         </>
     )
