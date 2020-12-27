@@ -16,7 +16,7 @@ const pool = mysql.createPool({
     password: process.env.DB_PASSWORD
 });
 
-// /api/auth
+// /api/auth/login
 router.post('/login', [
     check('email', 'Envalid email').normalizeEmail().isEmail(),
     check('password').exists()
@@ -50,7 +50,7 @@ router.post('/login', [
     }
 })
 
-// /api/auth
+// /api/auth/register
 router.post('/register', [
     check('email', 'Envalid email').isEmail(),
     check('password', 'Weak password').isLength({min: 6})
@@ -65,7 +65,7 @@ router.post('/register', [
 
         pool.query("INSERT INTO `mydb`.`user` (`NAME`, `EMAIL`, `PASSWORD`) VALUES (?, ?, ?);",
         [name, email, hashedPassword],
-        (err, data) => {
+        (err) => {
                 if(err) 
                     return res.status(500).json({message:err});
                 return res.status(201).json({message: 'Created'});
