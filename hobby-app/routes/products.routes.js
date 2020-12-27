@@ -42,7 +42,7 @@ router.post('/create', auth, admin, async (req, res) => {
     try{
         const {name, count, description, gameSeriesId, publishedHouseId, articleId,
             auditoryId, categoryId} = req.body
-        pool.query('INSERT INTO `mydb`.`products` (`NAME`, `COUNT`, `DESCRIPTION`, `game_series_ID`, ' +
+        pool.query('INSERT INTO `mydb`.`products`  (`NAME`, `COUNT`, `DESCRIPTION`, `game_series_ID`, ' +
             '`published_houses_ID`, `article_ID`, `auditory_of_games_ID`, `category_ID`) ' +
             'VALUES (?, ?, ?, ?, ?, ?, ?, ?);',
         [name, count, description, gameSeriesId, publishedHouseId, articleId,
