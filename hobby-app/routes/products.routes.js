@@ -3,6 +3,7 @@ const {Router} = require('express')
 const mysql = require('mysql2')
 const admin = require('../middleware/admin.middleware')
 const router = Router()
+require('dotenv').config()
 
 const pool = mysql.createPool({
     connectionLimit: 5,
@@ -15,7 +16,6 @@ const pool = mysql.createPool({
 // /api/products/allProducts - show all products
 router.get('/allProducts', auth, async (req, res) => {
     try{
-        console.log(req.userData)
         pool.query('SELECT * FROM mydb.products;',[],async (err,data) => {
             return err? res.status(500).json({message:err}): res.status(200).json(data);
         })
