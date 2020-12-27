@@ -34,7 +34,7 @@ export const RegisterPage = () => {
                             onSubmit={handleSubmit}
                         >
                             <div className="card-content white-text">
-                                <span className="card-title teal-text text-darken-2">REGISTER</span>
+                                <span className="card-title teal-text text-darken-2">РЕГИСТРАЦИЯ</span>
                             </div>
                             <div className="input-field s12">
                                 <input
@@ -43,7 +43,7 @@ export const RegisterPage = () => {
                                     type="text"
                                     className="validate"
                                 />
-                                <label htmlFor="name">Name</label>
+                                <label htmlFor="name">Имя</label>
                             </div>
                             <div className="input-field s12">
                                 <input
@@ -61,7 +61,7 @@ export const RegisterPage = () => {
                                     name={"password"}
                                     className="validate"
                                 />
-                                <label htmlFor="password">Password</label>
+                                <label htmlFor="password">Пароль</label>
                             </div>
                             <div className="card-action">
                                 <button

@@ -38,7 +38,7 @@ export const LoginPage = () => {
                            onSubmit={handleSubmit}
                        >
                            <div className="card-content white-text">
-                               <span className="card-title teal-text text-darken-2">LOGIN</span>
+                               <span className="card-title teal-text text-darken-2">ВОЙТИ</span>
                            </div>
                            <div className="input-field s12">
                                <input
@@ -56,7 +56,7 @@ export const LoginPage = () => {
                                    name={"password"}
                                    className="validate"
                                />
-                               <label htmlFor="password">Password</label>
+                               <label htmlFor="password">Пароль</label>
                            </div>
                            <div className="card-action">
                                <button
