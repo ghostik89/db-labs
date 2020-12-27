@@ -23,7 +23,7 @@ router.get('/allProducts', auth, async (req, res) => {
     }
 })
 
-// /api/products/product/:id
+// /api/products/product/:id - get product by id
 router.get('/product/:id', auth, async (req, res) => {
     try{
         const id = req.params.id
@@ -32,6 +32,23 @@ router.get('/product/:id', auth, async (req, res) => {
                 return err? res.status(500).json({message:err}): res.status(200).json(data);
             })
     }catch (e) {
+        return res.status(500).json({message: 'Internal server error'})
+    }
+})
+
+// /api/products/create - create product
+router.get('/create', auth, async (req, res) => {
+    try{
+        const {name, count, description, gameSeriesId, publishedHouseId, articleId,
+            auditoryId, categoryId} = req.body
+        pool.query('INSERT INTO `mydb`.`products` (`NAME`, `COUNT`, `DESCRIPTION`, `game_series_ID`, `published_houses_ID`, `article_ID`, `auditory_of_games_ID`, `category_ID`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);',
+        [name, count, description, gameSeriesId, publishedHouseId, articleId,
+            auditoryId, categoryId],
+            async (err) => {
+                return err? res.status(500).json({message:err}): res.status(201);
+            })
+    }catch (e) {
+        console.log(e)
         return res.status(500).json({message: 'Internal server error'})
     }
 })
