@@ -1,7 +1,7 @@
 const auth = require('../middleware/auth.middleware')
 const {Router} = require('express')
 const mysql = require('mysql2')
-
+const admin = require('../middleware/admin.middleware')
 const router = Router()
 
 const pool = mysql.createPool({
@@ -15,6 +15,7 @@ const pool = mysql.createPool({
 // /api/products/allProducts - show all products
 router.get('/allProducts', auth, async (req, res) => {
     try{
+        console.log(req.userData)
         pool.query('SELECT * FROM mydb.products;',[],async (err,data) => {
             return err? res.status(500).json({message:err}): res.status(200).json(data);
         })
@@ -37,20 +38,25 @@ router.get('/product/:id', auth, async (req, res) => {
 })
 
 // /api/products/create - create product
-router.get('/create', auth, async (req, res) => {
+router.post('/create', auth, admin, async (req, res) => {
     try{
         const {name, count, description, gameSeriesId, publishedHouseId, articleId,
             auditoryId, categoryId} = req.body
-        pool.query('INSERT INTO `mydb`.`products` (`NAME`, `COUNT`, `DESCRIPTION`, `game_series_ID`, `published_houses_ID`, `article_ID`, `auditory_of_games_ID`, `category_ID`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);',
+        pool.query('INSERT INTO `mydb`.`products` (`NAME`, `COUNT`, `DESCRIPTION`, `game_series_ID`, ' +
+            '`published_houses_ID`, `article_ID`, `auditory_of_games_ID`, `category_ID`) ' +
+            'VALUES (?, ?, ?, ?, ?, ?, ?, ?);',
         [name, count, description, gameSeriesId, publishedHouseId, articleId,
             auditoryId, categoryId],
             async (err) => {
-                return err? res.status(500).json({message:err}): res.status(201);
+                return err? res.status(500).json({message:err}):
+                    res.status(201).json({message:'Created'});
             })
     }catch (e) {
         console.log(e)
         return res.status(500).json({message: 'Internal server error'})
     }
 })
+
+
 
 module.exports = router
