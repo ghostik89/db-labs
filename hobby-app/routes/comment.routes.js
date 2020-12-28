@@ -17,7 +17,9 @@ const pool = mysql.createPool({
 router.get('/product/:id', auth, async (req, res) => {
     try{
         const id = req.params.id
-        pool.query('SELECT * FROM mydb.comments where (`user_owns_product_ID` = ?);',
+        pool.query('SELECT comments.TEXT, user.NAME FROM mydb.comments\n' +
+            'join mydb.user on user.ID = comments.user_ID\n' +
+            'where comments.user_owns_product_ID = ?;',
             [id],async (err,data) => {
             return err? res.status(500).json({message:err}): res.json(data);
         })
@@ -41,7 +43,7 @@ router.post('/product/create', auth, async (req, res) => {
     }
 })
 
-// /api/comment/product/create - create comment by product id
+// /api/comment/product/update - update comment by product id
 router.put('/product/update', auth, async (req, res) => {
     try{
         const {text, commentId} = req.body
@@ -55,7 +57,7 @@ router.put('/product/update', auth, async (req, res) => {
     }
 })
 
-// /api/comment/product/delete/:id - create comment by product id
+// /api/comment/product/delete/:id - delete comment by product id
 router.delete('/product/delete/:id', auth, async (req, res) => {
     try{
         const id = req.params.id

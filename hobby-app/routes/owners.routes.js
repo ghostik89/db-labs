@@ -12,7 +12,7 @@ const pool = mysql.createPool({
     password: process.env.DB_PASSWORD
 });
 
-// /api/owners/all/byProduct/:id - create comment by product id
+// /api/owners/all/byProduct/:id - get info for product by owner
 router.get('/all/byProduct/:id', auth, async (req, res) => {
     try{
         const id = req.params.id
