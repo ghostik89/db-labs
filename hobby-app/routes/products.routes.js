@@ -68,19 +68,4 @@ router.post('/create', auth, admin, async (req, res) => {
     }
 })
 
-// /api/products/owners/:id - create product
-router.get('/owners/:id', auth, admin, async (req, res) => {
-    try{
-        const id = req.params.id
-        pool.query('SELECT * FROM mydb.user_owns_product where products_ID = ?;',
-            [id], async (err,data) => {
-                return err? res.status(500).json({message:err}):
-                    res.json(data);
-            })
-    }catch (e) {
-        console.log(e)
-        return res.status(500).json({message: 'Internal server error'})
-    }
-})
-
 module.exports = router

@@ -4,7 +4,6 @@ const mysql = require('mysql2')
 const router = Router()
 require('dotenv').config()
 
-
 const pool = mysql.createPool({
     connectionLimit: 5,
     host: process.env.DB_HOST,
@@ -13,11 +12,17 @@ const pool = mysql.createPool({
     password: process.env.DB_PASSWORD
 });
 
-// /api/category/all - create comment by product id
-router.get('/all', auth, async (req, res) => {
+// /api/owners/all/byProduct/:id - create comment by product id
+router.get('/all/byProduct/:id', auth, async (req, res) => {
     try{
-        pool.query('SELECT * FROM mydb.category;',
-            [],async (err,data) => {
+        const id = req.params.id
+        pool.query('SELECT user_owns_product.ID, user_owns_product.COUNT,' +
+            'user_owns_product.price, user.NAME\n' +
+            'FROM mydb.user_owns_product\n' +
+            'join mydb.products on user_owns_product.products_ID = products.ID\n' +
+            'join mydb.user on user_owns_product.user_ID = user.ID\n' +
+            'where products_ID = ?;',
+            [id],async (err,data) => {
                 return err? res.status(500).json({message:err}): res.json(data);
             })
     }catch (e) {
