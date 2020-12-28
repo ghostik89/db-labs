@@ -52,7 +52,7 @@ export const LoginPage = () => {
                            <div className="input-field s12">
                                <input
                                    id="password"
-                                   type="text"
+                                   type="password"
                                    name={"password"}
                                    className="validate"
                                />

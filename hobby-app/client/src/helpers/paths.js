@@ -3,5 +3,7 @@ export const paths = {
     toHome: '/home',
     toProduct: '/product/:productId',
     toRegister: '/register',
+    toOwnersProductPage: '/owners/product/:ownersProductId',
+    goToOwnersProductPage: (ownersProductId) => `/owners/product/${ownersProductId}`,
     goToProductPage: (productId) => `/product/${productId}`
 }

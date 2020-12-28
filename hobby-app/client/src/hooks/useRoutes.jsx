@@ -7,6 +7,7 @@ import {paths} from "../helpers/paths";
 import {HomePage} from "../pages/HomePage";
 import {RegisterPage} from "../pages/RegisterPage";
 import {ProductPage} from "../pages/ProductPage";
+import {OwnersPageProduct} from "../pages/OwnersPageProduct";
 
 export const useRoutes = (isAuth) => {
     return(
@@ -18,6 +19,9 @@ export const useRoutes = (isAuth) => {
                     </Route>
                     <Route path={paths.toProduct}>
                         <ProductPage/>
+                    </Route>
+                    <Route path={paths.toOwnersProductPage}>
+                        <OwnersPageProduct/>
                     </Route>
                     <Redirect to={paths.toHome}/>
                 </>:

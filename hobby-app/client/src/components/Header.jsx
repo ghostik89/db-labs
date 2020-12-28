@@ -11,6 +11,7 @@ export const Header = () => {
             <div className="nav-wrapper">
                 <Link to={paths.toHome} className="brand-logo">MY HOBBY STORE</Link>
                 <ul id="nav-mobile" className="right hide-on-med-and-down">
+                    <li className={"logout"}><i className="large material-icons">shopping_cart</i></li>
                     <li className={"logout"} onClick={() => logout()}>Выход</li>
                 </ul>
             </div>
