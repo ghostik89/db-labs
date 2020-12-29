@@ -2,6 +2,7 @@ const auth = require('../middleware/auth.middleware')
 const {Router} = require('express')
 const mysql = require('mysql2')
 const router = Router()
+const admin = require('../middleware/admin.middleware')
 require('dotenv').config()
 
 const pool = mysql.createPool({

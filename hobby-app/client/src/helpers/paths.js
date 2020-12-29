@@ -5,5 +5,8 @@ export const paths = {
     toRegister: '/register',
     toOwnersProductPage: '/owners/product/:ownersProductId',
     goToOwnersProductPage: (ownersProductId) => `/owners/product/${ownersProductId}`,
-    goToProductPage: (productId) => `/product/${productId}`
+    goToProductPage: (productId) => `/product/${productId}`,
+    toOwnersAccountPage: '/owner',
+    toUsersBasketPage: '/basket',
+    createOwnersProduct: '/product/create',
 }
