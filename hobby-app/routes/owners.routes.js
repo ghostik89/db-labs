@@ -31,4 +31,38 @@ router.get('/all/byProduct/:id', auth, async (req, res) => {
     }
 })
 
+
+// /api/owners/allProducts - get all products, what owner sell
+router.get('/allProducts', auth, async (req, res) => {
+    try{
+        const {userId} = req.userData
+
+        pool.query('SELECT user_owns_product.COUNT, products.NAME, user_owns_product.price FROM mydb.user_owns_product\n' +
+            'join mydb.products on user_owns_product.products_ID = products.ID\n' +
+            'where user_owns_product.user_ID = ?;',
+            [userId],async (err,data) => {
+                return err? res.status(500).json({message:err}): res.json(data);
+            })
+    }catch (e) {
+        return res.status(500).json({message: 'Internal server error'})
+    }
+})
+
+// /api/owners/product/create - add product for sell
+router.get('/product/create', auth, async (req, res) => {
+    try{
+        const {userId} = req.userData
+        const {count, productId, price} = req.body
+        pool.query('INSERT INTO `mydb`.`user_owns_product` ' +
+            '(`COUNT`, `user_ID`, `products_ID`, `price`) VALUES (?, ?, ?, ?);',
+            [count, userId, productId, price],
+            async (err,data) => {
+                return err? res.status(500).json({message:err}):
+                    res.status(201).json({message:"Created"});
+            })
+    }catch (e) {
+        return res.status(500).json({message: 'Internal server error'})
+    }
+})
+
 module.exports = router
