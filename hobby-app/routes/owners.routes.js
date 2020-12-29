@@ -33,7 +33,8 @@ router.get('/all/byProduct/:id', auth, async (req, res) => {
 
 
 // /api/owners/allProducts - get all products, what owner sell
-router.get('/allProducts', auth, async (req, res) => {
+router.get('/allProducts', auth, admin,
+    async (req, res) => {
     try{
         const {userId} = req.userData
 
@@ -49,7 +50,8 @@ router.get('/allProducts', auth, async (req, res) => {
 })
 
 // /api/owners/product/create - add product for sell
-router.get('/product/create', auth, async (req, res) => {
+router.get('/product/create', auth, admin,
+    async (req, res) => {
     try{
         const {userId} = req.userData
         const {count, productId, price} = req.body
@@ -64,5 +66,41 @@ router.get('/product/create', auth, async (req, res) => {
         return res.status(500).json({message: 'Internal server error'})
     }
 })
+
+// /api/owners/product/update/price/:price - update price for product
+router.put('/product/update/price', auth, admin,
+    async (req, res) => {
+    try{
+        const {userId} = req.userData
+        const {id, productId, price} = req.body
+        pool.query('UPDATE `mydb`.`user_owns_product` SET `price` = ? ' +
+            'WHERE (`ID` = ?) and (`user_ID` = ?) and (`products_ID` = ?);',
+            [price, id, userId, productId],
+            async (err) => {
+                return err? res.status(500).json({message:err}):
+                    res.status(201).json({message:"Created"});
+            })
+    }catch (e) {
+        return res.status(500).json({message: 'Internal server error'})
+    }
+})
+
+// /api/owners/product/update/price/:price - update price for product
+router.put('/product/update/count', auth, admin,
+    async (req, res) => {
+        try{
+            const {userId} = req.userData
+            const {id, productId, count} = req.body
+            pool.query('UPDATE `mydb`.`user_owns_product` SET `COUNT` = ? ' +
+                'WHERE (`ID` = ?) and (`user_ID` = ?) and (`products_ID` = ?);',
+                [count, id, userId, productId],
+                async (err) => {
+                    return err? res.status(500).json({message:err}):
+                        res.status(201).json({message:"Created"});
+                })
+        }catch (e) {
+            return res.status(500).json({message: 'Internal server error'})
+        }
+    })
 
 module.exports = router
