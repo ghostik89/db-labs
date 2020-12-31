@@ -7,12 +7,13 @@ import './header.css'
 export const Header = () => {
     const {logout} = useContext(AuthContext)
     return(
-        <nav className={'header teal lighten-2'}>
+        <nav>
             <div className="nav-wrapper">
-                <Link to={paths.toHome} className="brand-logo">MY HOBBY STORE</Link>
+                <Link to={paths.toHome} className="brand-logo">Logo</Link>
                 <ul id="nav-mobile" className="right hide-on-med-and-down">
-                    <li className={"logout"}><i className="large material-icons">shopping_cart</i></li>
-                    <li className={"logout"} onClick={() => logout()}>Выход</li>
+                    <li><Link to={paths.toHome}>Sass</Link></li>
+                    <li><Link to={paths.toHome}>Components</Link></li>
+                    <li className={'pointer-btn'} onClick={() => logout()}>Выход</li>
                 </ul>
             </div>
         </nav>

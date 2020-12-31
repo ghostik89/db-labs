@@ -65,7 +65,7 @@ export const LoginPage = () => {
                                    name="action"
                                    disabled={loading}
                                >
-                                   Login
+                                   Войти
                                </button>
                                <button
                                    className="waves-effect waves-light btn"
@@ -74,7 +74,7 @@ export const LoginPage = () => {
                                    disabled={loading}
                                    onClick={() => history.push(paths.toRegister)}
                                >
-                                   Register
+                                   Регистрация
                                </button>
                            </div>
                        </form>

@@ -6,7 +6,7 @@ export const paths = {
     toOwnersProductPage: '/owners/product/:ownersProductId',
     goToOwnersProductPage: (ownersProductId) => `/owners/product/${ownersProductId}`,
     goToProductPage: (productId) => `/product/${productId}`,
-    toOwnersAccountPage: '/owner',
+    toUserAccountPage: '/owner',
     toUsersBasketPage: '/basket',
-    createOwnersProduct: '/product/create',
+    toCreateOwnersProduct: '/product/create',
 }

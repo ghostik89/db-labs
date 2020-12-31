@@ -70,7 +70,7 @@ export const RegisterPage = () => {
                                     name="action"
                                     disabled={loading}
                                 >
-                                    Register
+                                    Регистрация
                                 </button>
                                 <button
                                     className="waves-effect waves-light btn"
@@ -79,7 +79,7 @@ export const RegisterPage = () => {
                                     disabled={loading}
                                     onClick={() => history.push(paths.toLogin)}
                                 >
-                                    Login
+                                    Войтиы
                                 </button>
                             </div>
                         </form>

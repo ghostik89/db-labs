@@ -8,6 +8,9 @@ import {HomePage} from "../pages/HomePage";
 import {RegisterPage} from "../pages/RegisterPage";
 import {ProductPage} from "../pages/ProductPage";
 import {OwnersPageProduct} from "../pages/OwnersPageProduct";
+import {UserPage} from "../pages/UserPage";
+import {BasketPage} from "../pages/BasketPage";
+import {AddProductPage} from "../pages/AddProductPage";
 
 export const useRoutes = (isAuth) => {
     return(
@@ -22,6 +25,15 @@ export const useRoutes = (isAuth) => {
                     </Route>
                     <Route path={paths.toOwnersProductPage}>
                         <OwnersPageProduct/>
+                    </Route>
+                    <Route path={paths.toUserAccountPage}>
+                        <UserPage/>
+                    </Route>
+                    <Route path={paths.toUsersBasketPage}>
+                        <BasketPage/>
+                    </Route>
+                    <Route path={paths.toCreateOwnersProduct}>
+                        <AddProductPage/>
                     </Route>
                     <Redirect to={paths.toHome}/>
                 </>:
