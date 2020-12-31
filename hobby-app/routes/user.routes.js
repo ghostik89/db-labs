@@ -20,7 +20,7 @@ router.get('/info', auth, async (req, res) => {
         pool.query('SELECT user.NAME as username, user.EMAIL, roles.NAME, roles.ID FROM mydb.user\n' +
             'join mydb.roles_has_user on roles_has_user.user_ID = user.ID\n' +
             'join mydb.roles on roles_has_user.roles_ID = roles.ID\n' +
-            'where user.ID = 1;',
+            'where user.ID = ?;',
             [userId],async (err,data) => {
                 return err? res.status(500).json({message:err}): res.json(data[0]);
             })
