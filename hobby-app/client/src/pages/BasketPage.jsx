@@ -1,5 +1,11 @@
 import React from "react";
+import {Header} from "../components/Header";
 
 export const BasketPage = () => {
-    return(<h1>Basket page</h1>)
+
+    return(
+        <>
+            <Header/>
+        </>
+    )
 }

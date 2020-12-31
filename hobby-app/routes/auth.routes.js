@@ -18,7 +18,7 @@ const pool = mysql.createPool({
 
 // /api/auth/login
 router.post('/login', [
-    check('email', 'Envalid email').normalizeEmail().isEmail(),
+    check('email', 'Invalid email').normalizeEmail().isEmail(),
     check('password').exists()
 ], async (req, res) => {
     try{
@@ -33,11 +33,14 @@ router.post('/login', [
         pool.query("SELECT * FROM mydb.user where EMAIL = ?;",
         [email],
         async (err, data) => {
-                if(err) 
+                if(err)
                     return res.status(500).json({message:err});
+                if(data.length === 0)
+                    return res.status(403).json({message: 'Unauthorized'});
+
                 const isMatch = await bcrypt.compare(password, data[0].PASSWORD)
 
-                if(data.length === 0 && !isMatch)
+                if(!isMatch)
                     return res.status(403).json({message: 'Unauthorized'});
 
                 const token = jwt.sign({userId:  data[0].ID}, process.env.SECRET_KEY, {expiresIn: '1h'})

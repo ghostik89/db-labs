@@ -44,4 +44,21 @@ router.put('/updateEmail/:email', auth, async (req, res) => {
     }
 })
 
+// /api/user/basket - get user info
+router.get('/basket', auth, async (req, res) => {
+    try{
+        const {userId} = req.userData
+        pool.query('SELECT users_order_products.ID, users_order_products.COUNT,' +
+            'user_owns_product.price, products.NAME FROM mydb.users_order_products \n' +
+            'join mydb.user_owns_product on users_order_products.user_owns_product_ID = user_owns_product.ID\n' +
+            'join mydb.products on user_owns_product.products_ID = products.ID\n' +
+            'where users_order_products.user_ID = ?;',
+            [userId],async (err,data) => {
+                return err? res.status(500).json({message:err}): res.json(data);
+            })
+    }catch (e) {
+        return res.status(500).json({message: 'Internal server error'})
+    }
+})
+
 module.exports = router
