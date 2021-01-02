@@ -17,7 +17,7 @@ export const useRoutes = (isAuth) => {
         <Switch>
             {isAuth?
                 <>
-                    <Route path={paths.toHome}>
+                    <Route path={paths.toHome} exact>
                         <HomePage/>
                     </Route>
                     <Route path={paths.toProduct}>
@@ -26,13 +26,13 @@ export const useRoutes = (isAuth) => {
                     <Route path={paths.toOwnersProductPage}>
                         <OwnersPageProduct/>
                     </Route>
-                    <Route path={paths.toUserAccountPage}>
+                    <Route path={paths.toUserAccountPage} exact>
                         <UserPage/>
                     </Route>
-                    <Route path={paths.toUsersBasketPage}>
+                    <Route path={paths.toUsersBasketPage} exact>
                         <BasketPage/>
                     </Route>
-                    <Route path={paths.toCreateOwnersProduct}>
+                    <Route path={paths.toCreateOwnersProduct} exact>
                         <AddProductPage/>
                     </Route>
                     <Redirect to={paths.toHome}/>

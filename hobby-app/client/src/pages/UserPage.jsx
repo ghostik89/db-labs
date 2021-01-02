@@ -60,7 +60,7 @@ export const UserPage = () => {
                                 >
                                     <div className="row">
                                         <div className="input-field col s6">
-                                            <input id="email" type="text" className="validate"/>
+                                            <input id="email" value={email} type="text" className="validate"/>
                                             <label htmlFor="email">Email</label>
                                         </div>
                                         <button

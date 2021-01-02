@@ -50,7 +50,7 @@ router.get('/allProducts', auth, admin,
 })
 
 // /api/owners/product/create - add product for sell
-router.get('/product/create', auth, admin,
+router.post('/product/create', auth, admin,
     async (req, res) => {
     try{
         const {userId} = req.userData
@@ -58,7 +58,7 @@ router.get('/product/create', auth, admin,
         pool.query('INSERT INTO `mydb`.`user_owns_product` ' +
             '(`COUNT`, `user_ID`, `products_ID`, `price`) VALUES (?, ?, ?, ?);',
             [count, userId, productId, price],
-            async (err,data) => {
+            async (err) => {
                 return err? res.status(500).json({message:err}):
                     res.status(201).json({message:"Created"});
             })

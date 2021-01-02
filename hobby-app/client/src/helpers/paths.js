@@ -8,5 +8,5 @@ export const paths = {
     goToProductPage: (productId) => `/product/${productId}`,
     toUserAccountPage: '/owner',
     toUsersBasketPage: '/basket',
-    toCreateOwnersProduct: '/product/create',
+    toCreateOwnersProduct: '/productCreate',
 }
