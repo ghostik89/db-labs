@@ -31,6 +31,24 @@ router.get('/all/byProduct/:id', auth, async (req, res) => {
     }
 })
 
+// /api/owners/all/byProduct/:id - get info for product by owner
+router.get('/all/byOneProduct/:id', auth, async (req, res) => {
+    try{
+        const id = req.params.id
+        pool.query('SELECT user_owns_product.ID, user_owns_product.COUNT,' +
+            'user_owns_product.price, user.NAME\n' +
+            'FROM mydb.user_owns_product\n' +
+            'join mydb.products on user_owns_product.products_ID = products.ID\n' +
+            'join mydb.user on user_owns_product.user_ID = user.ID\n' +
+            'where user_owns_product.ID = ?;',
+            [id],async (err,data) => {
+                return err? res.status(500).json({message:err}): res.json(data);
+            })
+    }catch (e) {
+        return res.status(500).json({message: 'Internal server error'})
+    }
+})
+
 
 // /api/owners/allProducts - get all products, what owner sell
 router.get('/allProducts', auth, admin,
