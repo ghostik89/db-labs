@@ -6,3 +6,7 @@
     cursor: pointer;
 }
 
+.btn-secondary {
+    border: 2px solid #6a1b9a;
+    border-radius: 0.2rem;
+}
