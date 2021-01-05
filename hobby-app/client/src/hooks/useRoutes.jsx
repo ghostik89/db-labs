@@ -2,7 +2,7 @@ import {
     Switch,
     Route, Redirect
 } from "react-router-dom";
-import {LoginPage} from "../pages/LoginPage";
+import {LoginPage} from "../pages/LoginPage/LoginPage";
 import {paths} from "../helpers/paths";
 import {HomePage} from "../pages/HomePage";
 import {RegisterPage} from "../pages/RegisterPage";

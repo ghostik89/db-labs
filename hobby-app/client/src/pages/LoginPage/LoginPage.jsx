@@ -1,10 +1,10 @@
 import React,{useState, useContext} from "react";
 import "./login-styles.css"
-import {AuthContext} from "../context/AuthContext";
+import {AuthContext} from "../../context/AuthContext";
 import {useHistory} from "react-router-dom"
-import {useHttp} from "../hooks/useHttp";
-import {paths} from "../helpers/paths";
-import {useMessage} from "../hooks/useMessage";
+import {useHttp} from "../../hooks/useHttp";
+import {paths} from "../../helpers/paths";
+import {useMessage} from "../../hooks/useMessage";
 
 export const LoginPage = () => {
     const [authCred, setAuthCred] = useState()
@@ -38,7 +38,9 @@ export const LoginPage = () => {
                            onSubmit={handleSubmit}
                        >
                            <div className="card-content white-text">
-                               <span className="card-title teal-text text-darken-2">ВОЙТИ</span>
+                               <span className="card-title teal-text text-darken-2">
+                                   ВОЙТИ В HOBBY STORE
+                               </span>
                            </div>
                            <div className="input-field s12">
                                <input
