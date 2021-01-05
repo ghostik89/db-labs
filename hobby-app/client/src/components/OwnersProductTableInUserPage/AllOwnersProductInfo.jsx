@@ -24,15 +24,13 @@ export const AllOwnersProductInfo = () => {
     },[request, token])
 
     return(
-        <>
-            <div className={"row"}>
-                <h4 className={"col s3"}>Мои продукты</h4>
-                <Link to={paths.toCreateOwnersProduct}
-                      className="btn-floating btn-small waves-effect waves-light redЛ">
-                    <i className="material-icons">add</i>
-                </Link>
-            </div>
-            <table>
+        <div className={"row"}>
+            <h4 className={"col s5"}>Мои продукты</h4>
+            <Link to={paths.toCreateOwnersProduct}
+                  className="btn-floating btn-small waves-effect waves-light purple darken-3 btn-lower">
+                <i className="material-icons">add</i>
+            </Link>
+            <table className="col s12">
                 <thead>
                 <tr>
                     <th>Назавание продукта</th>
@@ -46,6 +44,6 @@ export const AllOwnersProductInfo = () => {
                 ))}
                 </tbody>
             </table>
-        </>
+        </div>
     )
 }

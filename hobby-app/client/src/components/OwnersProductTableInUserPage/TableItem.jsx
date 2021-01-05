@@ -54,24 +54,26 @@ export const TableItem = ({product, index}) => {
                 {!isEditCount? <div>
                         {newCount? newCount:product.COUNT}
                         <i
-                            className="material-icons tiny"
+                            className="material-icons tiny btn-edit purple-text darken-3 pointer-btn"
                             onClick={() => setIsEditCount(true)}
                         >
                             create
                         </i>
                     </div>:
                     <form className={"row"} onChange={handleChange} onSubmit={handleEditCount}>
-                        <div className="input-field col s6">
+                        <div className="input-field col s4">
                             <input
-                                id="last_name"
-                                type="text"
+                                id={"count" + product.ID}
+                                value={newCount? newCount:product.COUNT}
+                                type="number"
                                 className="validate"
                                 name={"count"}
                             />
-                            <label htmlFor="last_name">Last Name</label>
+                            <label className="active" htmlFor={"count" + product.ID}>Количество</label>
                         </div>
-                        <button className="waves-effect waves-light btn-flat" type="submit" name="action">
-                            <i className="material-icons right">send</i>
+                        <button className="waves-effect waves-light btn-flat col s2 btn-lower-table purple-text darken-3"
+                                type="submit" name="action">
+                            <i className="material-icons">send</i>
                         </button>
                     </form>
                 }
@@ -80,22 +82,24 @@ export const TableItem = ({product, index}) => {
                 {!isEditPrice? <div>
                     {newPrice? newPrice: product.price}
                     <i
-                        className="material-icons tiny"
+                        className="material-icons tiny btn-edit purple-text darken-3 pointer-btn"
                         onClick={() => setIsEditPrice(true)}
                     >
                         create
                     </i>
                 </div>: <form className={"row"} onChange={handleChange} onSubmit={handleEditPrice}>
-                    <div className="input-field col s6">
+                    <div className="input-field col s4">
                         <input
-                            id="last_name"
-                            type="text"
+                            id={"price" + product.ID}
+                            type="number"
+                            value={newPrice? newPrice: product.price}
                             className="validate"
                             name={"price"}
                         />
-                        <label htmlFor="last_name">Last Name</label>
+                        <label className="active" htmlFor={"price" + product.ID}>Цена</label>
                     </div>
-                    <button className="waves-effect waves-light btn-flat" type="submit" name="action">
+                    <button className="waves-effect waves-light btn-flat col s1 btn-lower-table purple-text darken-3"
+                            type="submit" name="action">
                         <i className="material-icons right">send</i>
                     </button>
                 </form>}

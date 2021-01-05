@@ -32,9 +32,9 @@ export const AddProductPage = () => {
     return(
         <>
             <Header/>
-            <div className={"container"}>
+            <div className={"container row"}>
                 <h2>Добавленеие продукта</h2>
-                <form onChange={handleChange} onSubmit={handleSubmit}>
+                <form className="row" onChange={handleChange} onSubmit={handleSubmit}>
                     <ProductSelect/>
                     <div className="input-field col s6">
                         <input name={"count"} id="first_name" type="number" className="validate"/>
@@ -44,7 +44,8 @@ export const AddProductPage = () => {
                         <input name={"price"} id="first_name" type="number" className="validate"/>
                         <label htmlFor="first_name">Цена</label>
                     </div>
-                    <button className="btn waves-effect waves-light" type="submit" name="action">
+                    <button className="btn waves-effect waves-light purple darken-3 col s4"
+                            type="submit" name="action">
                         Добавить продукт
                     </button>
                 </form>
