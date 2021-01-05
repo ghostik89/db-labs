@@ -35,19 +35,19 @@ export const OwnersTable = () => {
             {loading? <Loader/>:
                 <>
                     {owners.map((elem, index) => (
-                        <tr key={index} >
+                        <tr key={index}>
                             <td>
-                                <Link to={paths.goToOwnersProductPage(elem.ID)}>
+                                <Link className="deep-purple-text" to={paths.goToOwnersProductPage(elem.ID)}>
                                     {elem.NAME}
                                 </Link>
                             </td>
                             <td>
-                                <Link to={paths.goToOwnersProductPage(elem.ID)}>
+                                <Link className="deep-purple-text" to={paths.goToOwnersProductPage(elem.ID)}>
                                     {elem.COUNT}
                                 </Link>
                             </td>
                             <td>
-                                <Link to={paths.goToOwnersProductPage(elem.ID)}>
+                                <Link className={"deep-purple-text"} to={paths.goToOwnersProductPage(elem.ID)}>
                                     {elem.price}
                                 </Link>
                             </td>

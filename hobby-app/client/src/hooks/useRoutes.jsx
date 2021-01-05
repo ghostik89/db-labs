@@ -6,7 +6,7 @@ import {LoginPage} from "../pages/LoginPage/LoginPage";
 import {paths} from "../helpers/paths";
 import {HomePage} from "../pages/HomePage";
 import {RegisterPage} from "../pages/RegisterPage";
-import {ProductPage} from "../pages/ProductPage";
+import {ProductPage} from "../pages/ProductPage/ProductPage";
 import {OwnersPageProduct} from "../pages/OwnersPageProduct";
 import {UserPage} from "../pages/UserPage";
 import {BasketPage} from "../pages/BasketPage";
