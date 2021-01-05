@@ -26,8 +26,8 @@ export const HomePage = () => {
                 {loading?
                     <Loader/>:
                     <>
-                        <h2>Доступная продукция</h2>
                         <div className={"row"}>
+                            <h2 className={"col s12"}>Доступная продукция</h2>
                             {products.map((elem, index) => (
                                 <ProductItem key={index} product={elem}/>
                             ))}
