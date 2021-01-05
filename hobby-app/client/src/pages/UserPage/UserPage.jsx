@@ -1,8 +1,9 @@
 import React,{useState, useContext, useEffect} from "react";
-import {useHttp} from "../hooks/useHttp";
-import {AuthContext} from "../context/AuthContext";
-import {Header} from "../components/Header/Header";
-import {AllOwnersProductInfo} from "../components/OwnersProductTableInUserPage/AllOwnersProductInfo";
+import {useHttp} from "../../hooks/useHttp";
+import {AuthContext} from "../../context/AuthContext";
+import {Header} from "../../components/Header/Header";
+import {AllOwnersProductInfo} from "../../components/OwnersProductTableInUserPage/AllOwnersProductInfo";
+import './user-page.css'
 
 export const UserPage = () => {
     const {loading, request} = useHttp()
@@ -10,8 +11,6 @@ export const UserPage = () => {
     const [userInfo, setUserInfo] = useState([])
     const [editEmail, setEditEmail] = useState(false)
     const [email, setEmail] = useState('')
-
-
 
     useEffect( () => {
         request('/api/user/info', 'GET', token)
@@ -43,8 +42,8 @@ export const UserPage = () => {
         <>
             <Header/>
             <div className={"container"}>
+                <h4>Основная информация</h4>
                 <ul className="collection with-header">
-                    <li className="collection-header"><h4>Основная информация</h4></li>
                     <li className="collection-item">
                         <span className={"title"}>Имя пользователя</span>
                         <div>{userInfo.username} ({userInfo.NAME})</div>
@@ -60,11 +59,15 @@ export const UserPage = () => {
                                 >
                                     <div className="row">
                                         <div className="input-field col s6">
-                                            <input id="email" value={email} type="text" className="validate"/>
-                                            <label htmlFor="email">Email</label>
+                                            <input
+                                                id="email"
+                                                value={email}
+                                                type="text"
+                                                className="validate"
+                                            />
                                         </div>
                                         <button
-                                            className="waves-effect waves-light btn-flat"
+                                            className="waves-effect purple-text darken-3 waves-light btn-flat btn-lower"
                                             type="submit"
                                             name="action"
                                         >
@@ -73,8 +76,12 @@ export const UserPage = () => {
                                     </div>
                                 </form>
                             }
-                            {!editEmail && <span className="secondary-content" onClick={() => setEditEmail(true)}>
-                            <i className="material-icons">create</i>
+                            {!editEmail &&
+                            <span
+                                className="secondary-content pointer-btn"
+                                onClick={() => setEditEmail(true)}
+                            >
+                                <i className="material-icons  purple-text darken-3">create</i>
                         </span>}
                         </div>
                     </li>

@@ -8,7 +8,7 @@ import {HomePage} from "../pages/HomePage";
 import {RegisterPage} from "../pages/RegisterPage";
 import {ProductPage} from "../pages/ProductPage/ProductPage";
 import {OwnersPageProduct} from "../pages/OwnersPageProduct";
-import {UserPage} from "../pages/UserPage";
+import {UserPage} from "../pages/UserPage/UserPage";
 import {BasketPage} from "../pages/BasketPage";
 import {AddProductPage} from "../pages/AddProductPage";
 
