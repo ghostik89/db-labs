@@ -70,7 +70,7 @@ export const LoginPage = () => {
                                    Войти
                                </button>
                                <button
-                                   className="waves-effect black-text white waves-light btn btn-secondary"
+                                   className="waves-effect purple-text white waves-light btn btn-secondary"
                                    type="button"
                                    name="action"
                                    disabled={loading}

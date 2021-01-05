@@ -65,7 +65,7 @@ export const RegisterPage = () => {
                             </div>
                             <div className="card-action">
                                 <button
-                                    className="btn waves-effect waves-light btn-shift"
+                                    className="btn purple darken-3 waves-effect waves-light btn-shift"
                                     type="submit"
                                     name="action"
                                     disabled={loading}
@@ -73,7 +73,7 @@ export const RegisterPage = () => {
                                     Регистрация
                                 </button>
                                 <button
-                                    className="waves-effect waves-light btn"
+                                    className="waves-effect deep-purple-text white waves-light btn btn-secondary"
                                     type="button"
                                     name="action"
                                     disabled={loading}
