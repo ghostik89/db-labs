@@ -2,7 +2,7 @@ import React, {useContext, useEffect, useState} from "react";
 import {Header} from "../components/Header/Header";
 import {useHttp} from "../hooks/useHttp";
 import {AuthContext} from "../context/AuthContext";
-import {Loader} from "../components/Loader";
+import {Loader} from "../components/Loader/Loader";
 import {useParams} from "react-router-dom"
 import {OwnersTable} from "../components/OwnersTable";
 
@@ -24,7 +24,7 @@ export const ProductPage = () => {
         <>
             <Header/>
             <div className={"container"}>
-                {loading? <Loader/>:
+                    {loading? <Loader/>:
                     <>
                         <h1>{product.NAME}</h1>
                         <ul className="collection">

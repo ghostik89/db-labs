@@ -2,7 +2,7 @@ import React, {useContext, useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import {useHttp} from "../hooks/useHttp";
 import {AuthContext} from "../context/AuthContext";
-import {Loader} from "./Loader";
+import {Loader} from "./Loader/Loader";
 
 export const OwnersProductInfo = () => {
     const {ownersProductId} = useParams()

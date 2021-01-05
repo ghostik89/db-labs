@@ -2,7 +2,7 @@ import React, {useContext, useEffect, useState} from "react";
 import {Header} from "../components/Header/Header";
 import {useHttp} from "../hooks/useHttp";
 import {AuthContext} from "../context/AuthContext";
-import {Loader} from "../components/Loader";
+import {Loader} from "../components/Loader/Loader";
 import {ProductItem} from "../components/ProductItem/ProductItem";
 
 export const HomePage = () => {

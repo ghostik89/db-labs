@@ -2,7 +2,7 @@ import React, {useContext, useState, useEffect} from "react";
 import {useHttp} from "../hooks/useHttp";
 import {AuthContext} from "../context/AuthContext";
 import {Link, useParams} from "react-router-dom";
-import {Loader} from "./Loader";
+import {Loader} from "./Loader/Loader";
 import './OwnersProductTableInUserPage/owners-stylers.css'
 import {paths} from "../helpers/paths";
 
