@@ -38,7 +38,8 @@ router.get('/allProducts', auth, admin,
     try{
         const {userId} = req.userData
 
-        pool.query('SELECT user_owns_product.COUNT, products.NAME, user_owns_product.price FROM mydb.user_owns_product\n' +
+        pool.query('SELECT  user_owns_product.ID,' +
+            'user_owns_product.COUNT, products.NAME, user_owns_product.price FROM mydb.user_owns_product\n' +
             'join mydb.products on user_owns_product.products_ID = products.ID\n' +
             'where user_owns_product.user_ID = ?;',
             [userId],async (err,data) => {
