@@ -1,7 +1,7 @@
 import React, {useContext} from "react";
 import {Link} from "react-router-dom";
-import {paths} from "../helpers/paths";
-import {AuthContext} from "../context/AuthContext";
+import {paths} from "../../helpers/paths";
+import {AuthContext} from "../../context/AuthContext";
 import './header.css'
 
 export const Header = () => {

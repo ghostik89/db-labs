@@ -1,8 +1,8 @@
 import React,{useState, useContext, useEffect} from "react";
 import {useHttp} from "../hooks/useHttp";
 import {AuthContext} from "../context/AuthContext";
-import {Header} from "../components/Header";
-import {AllOwnersProductInfo} from "../components/AllOwnersProductInfo";
+import {Header} from "../components/Header/Header";
+import {AllOwnersProductInfo} from "../components/OwnersProductTableInUserPage/AllOwnersProductInfo";
 
 export const UserPage = () => {
     const {loading, request} = useHttp()

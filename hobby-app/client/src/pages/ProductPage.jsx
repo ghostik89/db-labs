@@ -1,9 +1,9 @@
 import React, {useContext, useEffect, useState} from "react";
-import {Header} from "../components/Header";
+import {Header} from "../components/Header/Header";
 import {useHttp} from "../hooks/useHttp";
 import {AuthContext} from "../context/AuthContext";
 import {Loader} from "../components/Loader";
-import {Link, useParams} from "react-router-dom"
+import {useParams} from "react-router-dom"
 import {OwnersTable} from "../components/OwnersTable";
 
 export const ProductPage = () => {
