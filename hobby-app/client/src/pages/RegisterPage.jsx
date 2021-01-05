@@ -79,7 +79,7 @@ export const RegisterPage = () => {
                                     disabled={loading}
                                     onClick={() => history.push(paths.toLogin)}
                                 >
-                                    Войтиы
+                                    Войти
                                 </button>
                             </div>
                         </form>
