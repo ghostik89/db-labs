@@ -1,10 +1,8 @@
 import React, {useContext, useEffect, useState} from "react";
 import {Header} from "../components/Header/Header";
 import {useHttp} from "../hooks/useHttp";
-import {AuthContext} from "../context/AuthContext";
-import {Link} from "react-router-dom";
 import {Loader} from "../components/Loader";
-import {paths} from "../helpers/paths";
+import {ProductItem} from "../components/ProductItem/ProductItem";
 
 export const HomePage = () => {
     const {loading, request} = useHttp()
@@ -27,20 +25,10 @@ export const HomePage = () => {
                 {loading?
                     <Loader/>:
                     <>
-                        <h1>Доступная продукция</h1>
-                        <div className="collection">
+                        <h2>Доступная продукция</h2>
+                        <div className={"row"}>
                             {products.map((elem, index) => (
-                                <Link
-                                    key={index}
-                                    to={paths.goToProductPage(elem.ID)}
-                                    className="collection-item avatar"
-                                >
-                                    <i className="material-icons circle green medium">casino</i>
-                                    <span className="title">{elem.NAME}</span>
-                                    <p>
-                                        {elem.DESCRIPTION}
-                                    </p>
-                                </Link>
+                                <ProductItem key={index} product={elem}/>
                             ))}
                         </div>
                     </>
