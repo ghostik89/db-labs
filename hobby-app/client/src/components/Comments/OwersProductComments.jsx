@@ -1,8 +1,9 @@
 import React, {useContext, useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
-import {useHttp} from "../hooks/useHttp";
-import {AuthContext} from "../context/AuthContext";
-import {Loader} from "./Loader/Loader";
+import {useHttp} from "../../hooks/useHttp";
+import {AuthContext} from "../../context/AuthContext";
+import {Loader} from "../Loader/Loader";
+import './comments.css'
 
 export const OwnersProductComments = () => {
     const {ownersProductId} = useParams()
@@ -46,24 +47,23 @@ export const OwnersProductComments = () => {
                     <ul className="collection">
                         {comments.map((elem, index) => (
                             <li key={index} className="collection-item avatar">
-                                <i className="material-icons circle green medium">account_circle</i>
+                                <i className="material-icons circle orange lighten-2 medium">account_circle</i>
                                 <span className="title">{elem.NAME}</span>
                                 <p>{elem.TEXT}</p>
                             </li>
                         ))}
                     </ul>
                 </>}
-            <div className={"row"}>
-                <form className="col s12" onChange={handleChange} onSubmit={handleSubmit}>
+                <form className="row" onChange={handleChange} onSubmit={handleSubmit}>
                     <div className="input-field col s6">
                         <input id="comment" type="text" className="validate"/>
                         <label htmlFor="comment">Комментарий</label>
                     </div>
-                    <button className="btn waves-effect waves-light" type="submit" name="action">Отправить
+                    <button className="center-btn btn waves-effect waves-light purple darken-3 col s3"
+                            type="submit" name="action">Отправить
                         <i className="material-icons right">send</i>
                     </button>
                 </form>
-            </div>
         </>
     )
 }
