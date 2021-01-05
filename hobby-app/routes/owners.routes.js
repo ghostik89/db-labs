@@ -72,14 +72,13 @@ router.post('/product/create', auth, admin,
 router.put('/product/update/price', auth, admin,
     async (req, res) => {
     try{
-        const {userId} = req.userData
-        const {id, productId, price} = req.body
+        const {id, price} = req.body
         pool.query('UPDATE `mydb`.`user_owns_product` SET `price` = ? ' +
-            'WHERE (`ID` = ?) and (`user_ID` = ?) and (`products_ID` = ?);',
-            [price, id, userId, productId],
+            'WHERE (`ID` = ?);',
+            [price, id],
             async (err) => {
                 return err? res.status(500).json({message:err}):
-                    res.status(201).json({message:"Created"});
+                    res.json({message:"Created"});
             })
     }catch (e) {
         return res.status(500).json({message: 'Internal server error'})
@@ -90,14 +89,13 @@ router.put('/product/update/price', auth, admin,
 router.put('/product/update/count', auth, admin,
     async (req, res) => {
         try{
-            const {userId} = req.userData
-            const {id, productId, count} = req.body
+            const {id, count} = req.body
             pool.query('UPDATE `mydb`.`user_owns_product` SET `COUNT` = ? ' +
-                'WHERE (`ID` = ?) and (`user_ID` = ?) and (`products_ID` = ?);',
-                [count, id, userId, productId],
+                'WHERE (`ID` = ?);',
+                [count, id],
                 async (err) => {
                     return err? res.status(500).json({message:err}):
-                        res.status(201).json({message:"Created"});
+                        res.json({message:"Created"});
                 })
         }catch (e) {
             return res.status(500).json({message: 'Internal server error'})
